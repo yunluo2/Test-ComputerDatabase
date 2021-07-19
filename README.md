@@ -1,6 +1,6 @@
 # Test-ComputerDatabase
 
-AThis repository contains source code of UI tests for Computer Database Web Application.
+This repository contains source code of UI tests for Computer Database Web Application.
 
 To run the test
 
