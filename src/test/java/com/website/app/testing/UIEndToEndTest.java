@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- *
+ * UI end to end test
  */
 public class UIEndToEndTest {
     private WebDriver driver;
@@ -23,6 +23,11 @@ public class UIEndToEndTest {
     private CreateView createView;
     private EditView editView;
 
+    /**
+     * Helper function to pause for 1 second. Mainly for demo purpose.
+     * Comment out line 32 if pause is not desired.
+     * @throws InterruptedException for Thread.sleep
+     */
     private void pause() throws InterruptedException {
         Thread.sleep(1000);
     }
@@ -43,9 +48,12 @@ public class UIEndToEndTest {
         driver.quit();
     }
 
+    /**
+     * End to end test to create a new item, update it and delete it
+     * @throws InterruptedException for Thread.sleep
+     */
     @Test
     public void testCRUD() throws InterruptedException {
-        //!@#$%comp1 as computerName will fail filter
         String computerName = "******mycomp1";
         String updatedName = "******mycomp11111";
 
@@ -58,7 +66,7 @@ public class UIEndToEndTest {
         createView.chooseCompanyDropDownList("IBM");
         createView.clickCreateButton();
 
-        //Verify the new item has been created by filtering it
+        //Verify the new item has been created by filtering on it
         listView.inputToFilterTextBox(computerName);
         listView.clickFilterButton();
         pause();
@@ -72,7 +80,7 @@ public class UIEndToEndTest {
         pause();
         editView.clickSaveButton();
 
-        //Use filter to find the item then delete it
+        //Use filter to find the updated item then delete it
         listView.inputToFilterTextBox(updatedName);
         listView.clickFilterButton();
         pause();
@@ -86,5 +94,4 @@ public class UIEndToEndTest {
         listView.clickFilterButton();
         Assert.assertTrue(listView.noElementFound());
     }
-
 }
